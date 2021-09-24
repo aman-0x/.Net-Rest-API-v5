@@ -1,0 +1,32 @@
+.Net REST API v5
+
+Create a project in vs studio code 
+-   dotnet new webapi -n catalog
+
+Program.cs - where app begins.
+
+Startup.cs 
+	public IConfiguration Configuration {get: } -> used to read variable like env varibles.
+	public void ConfigureServices(IServiceCollection services) -> Register services which we are going to use across the app.
+	public void Configure(IApplicationBuilder app, IWebHostEnvironment env) -> Request handling pipeline configuration.
+
+appsettings.json - declares application configuration.
+appsettings.Development.json - application configuration for Development environment.(same we can create for Production or Test environment).
+
+use of ActionResult<Item> method - 
+	can return "NotFound()" OR "item" direclty both from the same method.
+
+Dependency Injection 
+	"class" ---uses--> "other class"
+	Dependency Inversion Principle
+	"class" --depends on---> "Interface" <---which implements ["Dependency A", "Dependency B" .. etc]----
+	
+	How to construct the dependency ?
+	["Dependency A", "Dependency B" .. etc] --Register--> "IServiceProvider" --resolve, construct and inject dependencies in --> "class"
+													     {Service Container}
+
+Dtos (Data Transfer Object)
+"ItemDto" is schema that is seen by the external user it is not the schema that is sored in the database.
+
+MongoDb Package No-SQL database
+-  dotnet add package MongoDB.Driver
